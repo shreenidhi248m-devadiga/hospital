@@ -231,6 +231,80 @@
             <i data-lucide="lock" style="width: 14px; color: var(--success);"></i>
             <span>Your connection is secure and protected by role-based access control.</span>
           </div>
+
+          <!-- DEMO LOGINS CREDENTIALS MATRIX TABLE -->
+          <div class="demo-accounts-card" style="margin-top: 24px; padding-top: 18px; border-top: 1px dashed var(--border-light);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <i data-lucide="key-round" style="color: var(--blue-600); width: 15px;"></i>
+                <span style="font-weight: 700; font-size: 0.85rem; color: var(--navy-900);">Demo Logins Directory</span>
+              </div>
+              <span class="badge-pill" style="font-size: 0.675rem; padding: 2px 8px;">One-Click Auto-Fill</span>
+            </div>
+
+            <div class="demo-table-wrapper" style="overflow-x: auto;">
+              <table class="demo-logins-table">
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>User ID / Email</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="role-cell"><i data-lucide="user" style="width: 13px; color: var(--blue-600);"></i> Patient</div>
+                    </td>
+                    <td><code>arjun.kumar@careintel.ai</code></td>
+                    <td><code>Patient@123</code></td>
+                    <td>
+                      <button type="button" class="btn-autofill" onclick="autoFillLogin('patient', 'arjun.kumar@careintel.ai', 'Patient@123')">
+                        Auto-Fill
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="role-cell"><i data-lucide="stethoscope" style="width: 13px; color: var(--blue-600);"></i> Doctor</div>
+                    </td>
+                    <td><code>dr.ananya@careintel.ai</code></td>
+                    <td><code>Doctor@123</code></td>
+                    <td>
+                      <button type="button" class="btn-autofill" onclick="autoFillLogin('doctor', 'dr.ananya@careintel.ai', 'Doctor@123')">
+                        Auto-Fill
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="role-cell"><i data-lucide="users-2" style="width: 13px; color: var(--blue-600);"></i> Staff</div>
+                    </td>
+                    <td><code>staff.opd@careintel.ai</code></td>
+                    <td><code>Staff@123</code></td>
+                    <td>
+                      <button type="button" class="btn-autofill" onclick="autoFillLogin('staff', 'staff.opd@careintel.ai', 'Staff@123')">
+                        Auto-Fill
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="role-cell"><i data-lucide="shield-check" style="width: 13px; color: var(--blue-600);"></i> Admin</div>
+                    </td>
+                    <td><code>admin.chief@careintel.ai</code></td>
+                    <td><code>Admin@123</code></td>
+                    <td>
+                      <button type="button" class="btn-autofill" onclick="autoFillLogin('admin', 'admin.chief@careintel.ai', 'Admin@123')">
+                        Auto-Fill
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </form>
       </div>
     </div>

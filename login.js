@@ -172,3 +172,58 @@ function handleSignUp(event) {
     alert('Hospital Personnel accounts must be provisioned by your IT Security Administrator.');
   }
 }
+
+/* 5. One-Click Auto-Fill Demo Logins Handler */
+function autoFillLogin(role, email, password) {
+  const roleCard = document.querySelector(`.role-card[data-role="${role}"]`);
+  if (roleCard) {
+    selectRole(role, roleCard);
+  }
+
+  const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('passwordInput');
+  const emailError = document.getElementById('emailError');
+  const passwordError = document.getElementById('passwordError');
+  const globalError = document.getElementById('globalErrorAlert');
+
+  if (emailInput) emailInput.value = email;
+  if (passwordInput) passwordInput.value = password;
+
+  if (emailInput) emailInput.classList.remove('is-invalid');
+  if (passwordInput) passwordInput.classList.remove('is-invalid');
+  if (emailError) emailError.classList.remove('active');
+  if (passwordError) passwordError.classList.remove('active');
+  if (globalError) globalError.style.display = 'none';
+
+  showLoginToast(`Auto-filled ${role.toUpperCase()} credentials (${email})`);
+}
+
+function showLoginToast(message) {
+  const toast = document.createElement('div');
+  toast.style.position = 'fixed';
+  toast.style.bottom = '24px';
+  toast.style.right = '24px';
+  toast.style.background = 'var(--navy-900)';
+  toast.style.color = '#FFFFFF';
+  toast.style.padding = '12px 20px';
+  toast.style.borderRadius = '10px';
+  toast.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+  toast.style.zIndex = '3000';
+  toast.style.fontSize = '0.85rem';
+  toast.style.fontWeight = '600';
+  toast.style.display = 'flex';
+  toast.style.alignItems = 'center';
+  toast.style.gap = '8px';
+  toast.style.border = '1px solid rgba(6, 182, 212, 0.3)';
+  toast.innerHTML = `<i data-lucide="sparkles" style="color: var(--cyan-400); width: 16px;"></i> ${message}`;
+  
+  document.body.appendChild(toast);
+  if (window.lucide) lucide.createIcons();
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.4s ease';
+    setTimeout(() => toast.remove(), 400);
+  }, 3000);
+}
+
