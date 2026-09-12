@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareIntel AI — Intelligent Healthcare Operations & Patient Intelligence</title>
+  <meta name="description" content="CareIntel AI connects patients, doctors, and hospital teams through intelligent automation, real-time insights, and AI-assisted healthcare workflows.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Lucide SVG Icons CDN for crisp UI icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- STICKY NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo-brand">
+        <div class="logo-icon">
+          <i data-lucide="activity"></i>
+        </div>
+        <span>CareIntel <span class="text-gradient">AI</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#patient-experience">For Patients</a></li>
+          <li><a href="#doctor-experience">For Doctors</a></li>
+          <li><a href="#command-center">Admin</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-secondary" onclick="openDemoModal('login')">Login</button>
+        <button class="btn btn-primary" onclick="openDemoModal('get-started')">
+          <span>Get Started</span>
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <span class="badge-spark">✦</span>
+          <span>AI-Powered Healthcare Platform</span>
+        </div>
+
+        <h1 class="hero-title">
+          Smarter Hospital Operations. <br>
+          <span class="text-gradient">Better Patient Care.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          CareIntel AI connects patients, doctors, and hospital teams through intelligent automation, real-time insights, and AI-assisted healthcare workflows.
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" onclick="openDemoModal('get-started')">
+            <span>Get Started</span>
+            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+          </button>
+          <a href="#features" class="btn btn-secondary">
+            <span>Explore Platform</span>
+          </a>
+        </div>
+
+        <div class="trust-indicators">
+          <div class="trust-item">
+            <i data-lucide="cpu"></i>
+            <span>AI-Assisted Workflows</span>
+          </div>
+          <div class="trust-item">
+            <i data-lucide="shield-check"></i>
+            <span>Secure Access</span>
+          </div>
+          <div class="trust-item">
+            <i data-lucide="zap"></i>
+            <span>Real-Time Operations</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Dashboard Visualization -->
+      <div class="hero-visual">
+        <!-- Floating Animated Notification Cards -->
+        <div class="floating-card floating-card-1">
+          <div class="icon-chip chip-blue">
+            <i data-lucide="sparkles" style="width: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-weight: 700;">AI Summary Ready</div>
+            <div style="font-size: 0.725rem; color: var(--text-muted);">Patient #402 triage concise</div>
+          </div>
+        </div>
+
+        <div class="floating-card floating-card-2">
+          <div class="icon-chip chip-green">
+            <i data-lucide="users" style="width: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-weight: 700;">Queue Updated</div>
+            <div style="font-size: 0.725rem; color: var(--text-muted);">Avg wait time reduced by 14m</div>
+          </div>
+        </div>
+
+        <div class="floating-card floating-card-3">
+          <div class="icon-chip chip-amber">
+            <i data-lucide="bell" style="width: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-weight: 700;">Follow-up Reminder</div>
+            <div style="font-size: 0.725rem; color: var(--text-muted);">Sent via WhatsApp & SMS</div>
+          </div>
+        </div>
+
+        <!-- Main Dashboard Mockup Card -->
+        <div class="dashboard-card">
+          <div class="dash-header">
+            <div class="dash-title-group">
+              <div class="dash-status-dot"></div>
+              <span style="font-weight: 700; color: var(--navy-900);">CareIntel Command — Today's Overview</span>
+            </div>
+            <span class="badge-pill" style="padding: 4px 10px; font-size: 0.75rem;">Live Sync</span>
+          </div>
+
+          <div class="dash-metrics-grid">
+            <div class="metric-box">
+              <div class="metric-value counter" data-target="128">0</div>
+              <div class="metric-label">Patients</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-value counter" data-target="24">0</div>
+              <div class="metric-label">Appointments</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-value counter" data-target="8">0</div>
+              <div class="metric-label">Follow-ups</div>
+            </div>
+            <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.3);">
+              <div class="metric-value counter" data-target="5" style="color: var(--danger);">0</div>
+              <div class="metric-label" style="color: var(--danger);">Priority</div>
+            </div>
+          </div>
+
+          <!-- AI Banner Inside Dashboard -->
+          <div class="ai-insight-banner">
+            <i data-lucide="bot" class="ai-spark-icon"></i>
+            <div class="ai-insight-text">
+              <p><strong>AI Triage Alert:</strong> OPD Queue #3 auto-routed to Dr. Ananya Sharma based on symptom urgency score (94%).</p>
+              <span>View Intelligent Routing Details →</span>
+            </div>
+          </div>
+
+          <!-- Mini Queue List -->
+          <div class="queue-mini-list">
+            <div class="queue-row">
+              <div class="patient-info-mini">
+                <i data-lucide="user-check" style="width: 16px; color: var(--blue-600);"></i>
+                <span>Arjun Kumar (#TK-042)</span>
+              </div>
+              <span class="status-badge in-progress">In Consultation</span>
+            </div>
+            <div class="queue-row">
+              <div class="patient-info-mini">
+                <i data-lucide="clock" style="width: 16px; color: var(--warning);"></i>
+                <span>Meera Patel (#TK-043)</span>
+              </div>
+              <span class="status-badge waiting">Waiting (~8m)</span>
+            </div>
+            <div class="queue-row">
+              <div class="patient-info-mini">
+                <i data-lucide="check-circle-2" style="width: 16px; color: var(--success);"></i>
+                <span>Rajesh V. (#TK-041)</span>
+              </div>
+              <span class="status-badge ready">Completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TRUST / VALUE STRIP -->
+  <section class="trust-strip">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Unified Platform</span>
+        <h2 class="section-title">One Intelligent Platform for the Entire Hospital</h2>
+        <p class="section-subtitle">Empowering every role in the healthcare ecosystem with specialized tools and ambient AI assistance.</p>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i data-lucide="heart-pulse"></i>
+          </div>
+          <h3>Patient</h3>
+          <p>Easy appointments, live digital queue tracking, instant medical record access, and automated smart reminders.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <i data-lucide="stethoscope"></i>
+          </div>
+          <h3>Doctor</h3>
+          <p>Instant patient summaries, intelligent lab reports, streamlined consultation notes, and follow-up tracking.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <i data-lucide="building-2"></i>
+          </div>
+          <h3>Hospital Admin</h3>
+          <p>Real-time hospital operations, predictive analytics, staff workload balancing, and bed utilization insights.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <i data-lucide="brain-circuit"></i>
+          </div>
+          <h3>AI Intelligence</h3>
+          <p>Automated analysis, clinical summarization, document data extraction, and priority triage workflow assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PROBLEM -> SOLUTION SECTION -->
+  <section class="prob-sol-section" id="features">
+    <div class="container">
+      <div class="prob-sol-grid">
+        <!-- Left: Problem -->
+        <div class="prob-card">
+          <div class="badge-pill" style="background: rgba(239, 68, 68, 0.1); color: var(--danger); border-color: rgba(239, 68, 68, 0.2);">
+            <span>The Traditional Bottleneck</span>
+          </div>
+          <h2 style="font-size: 2rem; margin: 16px 0; color: var(--navy-900);">
+            Healthcare Operations Shouldn’t Feel Complicated.
+          </h2>
+          <p>Traditional manual hospital workflows create unnecessary friction for patients, overload doctors with paperwork, and cause administrative delay.</p>
+
+          <ul class="prob-list">
+            <li class="prob-item">
+              <div class="prob-icon"><i data-lucide="x" style="width: 18px;"></i></div>
+              <span>Long waiting times in crowded hospital lobbies</span>
+            </li>
+            <li class="prob-item">
+              <div class="prob-icon"><i data-lucide="x" style="width: 18px;"></i></div>
+              <span>Manual repetitive data entry during check-in</span>
+            </li>
+            <li class="prob-item">
+              <div class="prob-icon"><i data-lucide="x" style="width: 18px;"></i></div>
+              <span>Scattered patient history and missing medical documents</span>
+            </li>
+            <li class="prob-item">
+              <div class="prob-icon"><i data-lucide="x" style="width: 18px;"></i></div>
+              <span>Missed post-consultation follow-up appointments</span>
+            </li>
+            <li class="prob-item">
+              <div class="prob-icon"><i data-lucide="x" style="width: 18px;"></i></div>
+              <span>Difficult coordination between departments & staff</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Solution -->
+        <div class="sol-card">
+          <div class="badge-pill" style="background: rgba(6, 182, 212, 0.15); color: var(--cyan-400); border-color: rgba(6, 182, 212, 0.3);">
+            <span>The CareIntel Transformation</span>
+          </div>
+          <h2 style="font-size: 2rem; margin: 16px 0; color: #FFFFFF;">
+            CareIntel AI Brings Everything Together.
+          </h2>
+          <p style="color: #94A3B8;">By embedding AI directly into hospital operations, CareIntel AI streamlines every step from booking to recovery.</p>
+
+          <ul class="sol-list">
+            <li class="sol-item">
+              <div class="sol-icon"><i data-lucide="check" style="width: 18px;"></i></div>
+              <span>Smart digital appointment & live token queue management</span>
+            </li>
+            <li class="sol-item">
+              <div class="sol-icon"><i data-lucide="check" style="width: 18px;"></i></div>
+              <span>AI-assisted patient clinical summaries in seconds</span>
+            </li>
+            <li class="sol-item">
+              <div class="sol-icon"><i data-lucide="check" style="width: 18px;"></i></div>
+              <span>Intelligent document OCR & lab report processing</span>
+            </li>
+            <li class="sol-item">
+              <div class="sol-icon"><i data-lucide="check" style="width: 18px;"></i></div>
+              <span>Real-time queue tracking & predictive wait times</span>
+            </li>
+            <li class="sol-item">
+              <div class="sol-icon"><i data-lucide="check" style="width: 18px;"></i></div>
+              <span>Automated WhatsApp / SMS reminders & treatment guidance</span>
+            </li>
+            <li class="sol-item">
+              <div class="sol-icon"><i data-lucide="check" style="width: 18px;"></i></div>
+              <span>Real-time hospital executive command center analytics</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. AI INTELLIGENCE SECTION -->
+  <section class="ai-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Engine</span>
+        <h2 class="section-title">AI That Assists Healthcare Teams</h2>
+        <p class="section-subtitle">Turn complex healthcare information into clear, actionable insights for clinicians and administrators.</p>
+      </div>
+
+      <div class="ai-hub-container">
+        <!-- Left Feature Cards -->
+        <div class="ai-cards-col">
+          <div class="ai-feature-card">
+            <div class="ai-card-head">
+              <div class="icon-chip chip-blue"><i data-lucide="file-text" style="width: 18px;"></i></div>
+              <h4>AI Patient Summary</h4>
+            </div>
+            <p>Converts lengthy patient histories, past consults, and lab notes into a concise 10-second summary for doctors.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-card-head">
+              <div class="icon-chip chip-blue"><i data-lucide="scan-text" style="width: 18px;"></i></div>
+              <h4>Intelligent Document Processing</h4>
+            </div>
+            <p>Automatically extracts lab values, vital signs, and diagnosis data from uploaded PDFs or handwritten reports.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-card-head">
+              <div class="icon-chip chip-blue"><i data-lucide="route" style="width: 18px;"></i></div>
+              <h4>Smart Department Routing</h4>
+            </div>
+            <p>Analyzes patient symptoms during registration and routes requests directly to the right specialty department.</p>
+          </div>
+        </div>
+
+        <!-- Center Glowing AI Core Visual -->
+        <div class="ai-core-visual">
+          <div class="ai-pulse-ring"></div>
+          <i data-lucide="sparkles" style="width: 60px; height: 60px; color: var(--cyan-400);"></i>
+          <span class="ai-core-title">CareIntel AI Core</span>
+          <span style="font-size: 0.75rem; color: #94A3B8; margin-top: 4px;">Clinical LLM + OCR</span>
+        </div>
+
+        <!-- Right Feature Cards -->
+        <div class="ai-cards-col">
+          <div class="ai-feature-card">
+            <div class="ai-card-head">
+              <div class="icon-chip chip-blue"><i data-lucide="alert-circle" style="width: 18px;"></i></div>
+              <h4>Priority Assistance</h4>
+            </div>
+            <p>Scans incoming queue entries to flag potentially urgent medical cases for immediate staff triage review.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-card-head">
+              <div class="icon-chip chip-blue"><i data-lucide="message-square" style="width: 18px;"></i></div>
+              <h4>AI Assistant</h4>
+            </div>
+            <p>Answers general patient hospital queries, department locations, visiting hours, and preparation guidelines.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-card-head">
+              <div class="icon-chip chip-blue"><i data-lucide="calendar-heart" style="width: 18px;"></i></div>
+              <h4>Follow-up Intelligence</h4>
+            </div>
+            <p>Monitors patient recovery progress and automatically schedules personalized follow-up notifications.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-disclaimer">
+        <i data-lucide="shield-alert" style="width: 18px; color: var(--warning); display: inline-block; vertical-align: middle; margin-right: 6px;"></i>
+        <strong>Clinical Disclaimer:</strong> AI-generated insights are intended to assist healthcare professionals and do not replace professional medical judgment.
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. HOW IT WORKS TIMELINE -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Seamless Workflow</span>
+        <h2 class="section-title">How CareIntel AI Works</h2>
+        <p class="section-subtitle">A simple 5-step intelligent workflow connecting patients, clinical staff, and operations.</p>
+      </div>
+
+      <div class="timeline-horizontal">
+        <div class="timeline-progress-bar">
+          <div class="timeline-progress-fill" id="timelineProgress"></div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">01</div>
+          <h4>Connect</h4>
+          <p>Patient, doctor or staff member securely logs into the CareIntel portal.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">02</div>
+          <h4>Submit</h4>
+          <p>Enter information, symptoms, appointment requests, or upload reports.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">03</div>
+          <h4>Analyze</h4>
+          <p>AI processes clinical data, extracts key values, and generates triage insights.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">04</div>
+          <h4>Assist</h4>
+          <p>Doctors review AI-assisted summaries and conduct focused consultations.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">05</div>
+          <h4>Manage</h4>
+          <p>Appointments, prescriptions, follow-ups and analytics managed seamlessly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PATIENT EXPERIENCE -->
+  <section class="experience-section" id="patient-experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Patient Center</span>
+        <h2 class="section-title">A Better Experience for Every Patient</h2>
+        <p class="section-subtitle">Empower patients with real-time digital queue updates, digital tokens, and clear treatment plans.</p>
+      </div>
+
+      <div class="dashboard-window">
+        <div class="window-topbar">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span style="font-size: 0.85rem; font-weight: 600;">CareIntel Portal — Patient Portal</span>
+          <i data-lucide="bell" style="width: 18px; color: var(--cyan-400); cursor: pointer;" onclick="showToast('Reminder: Follow-up visit scheduled for Thursday')"></i>
+        </div>
+
+        <div class="window-body">
+          <div class="patient-grid">
+            <!-- Patient Left Card -->
+            <div class="patient-profile-card">
+              <div class="avatar-upload-wrapper" onclick="triggerPhotoUpload('patientPhotoInput')" title="Click to upload patient photo">
+                <div class="avatar-placeholder" id="patientAvatarPreview">
+                  <i data-lucide="user" style="width: 42px; height: 42px; color: var(--blue-600);"></i>
+                </div>
+                <div class="avatar-upload-badge">
+                  <i data-lucide="camera" style="width: 14px; height: 14px;"></i>
+                </div>
+              </div>
+              <input type="file" id="patientPhotoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event, 'patientAvatarPreview')">
+              <button class="btn-upload-label" onclick="triggerPhotoUpload('patientPhotoInput')">
+                <i data-lucide="upload" style="width: 13px;"></i> Upload Patient Photo
+              </button>
+
+              <h3 style="font-size: 1.25rem; margin-bottom: 4px;">Arjun Kumar</h3>
+              <p style="font-size: 0.85rem; margin-bottom: 16px;">Male, 42 Yrs • ID: #P-88402</p>
+
+              <div class="token-ticket">
+                <div style="font-size: 0.8rem; text-transform: uppercase; opacity: 0.9;">Digital Token</div>
+                <div class="token-num">#TK-042</div>
+                <div style="font-size: 0.85rem; margin-top: 6px; font-weight: 600;">Cardiology OPD • Desk 4</div>
+              </div>
+
+              <div style="margin-top: 20px; text-align: left; font-size: 0.85rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span style="color: var(--text-muted);">Queue Status:</span>
+                  <span style="font-weight: 700; color: var(--blue-600);">#3 In Line</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-muted);">Est. Wait Time:</span>
+                  <span style="font-weight: 700; color: var(--success);">~12 Mins</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Patient Right Details -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <!-- Upcoming Consult Card -->
+              <div style="background: #FFFFFF; border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-light);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                  <span class="badge-pill" style="padding: 4px 10px; font-size: 0.75rem;">Today's Appointment</span>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);"><i data-lucide="clock" style="width: 14px; vertical-align: middle;"></i> 10:30 AM</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 16px;">
+                  <div class="avatar-upload-wrapper mini-avatar" onclick="triggerPhotoUpload('doctorPhotoInput')" title="Click to upload doctor photo">
+                    <div class="avatar-placeholder" id="doctorAvatarPreview">
+                      <i data-lucide="stethoscope" style="width: 26px; height: 26px; color: var(--blue-600);"></i>
+                    </div>
+                    <div class="avatar-upload-badge">
+                      <i data-lucide="camera" style="width: 12px; height: 12px;"></i>
+                    </div>
+                  </div>
+                  <input type="file" id="doctorPhotoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event, 'doctorAvatarPreview')">
+                  <div>
+                    <h4 style="font-size: 1.1rem; color: var(--navy-900);">Dr. Ananya Sharma</h4>
+                    <p style="font-size: 0.875rem;">Senior Cardiologist • Room 302</p>
+                    <button class="btn-text-link" onclick="triggerPhotoUpload('doctorPhotoInput')">+ Upload Doctor Photo</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Medical Documents & Prescriptions Tabs Preview -->
+              <div style="background: #FFFFFF; border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-light);">
+                <h4 style="font-size: 1rem; margin-bottom: 12px;">Recent Health Records & AI Summaries</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg-main); border-radius: var(--radius-sm);">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <i data-lucide="file-check" style="color: var(--blue-600); width: 18px;"></i>
+                      <div>
+                        <div style="font-size: 0.875rem; font-weight: 600;">Blood Lipid Profile Report.pdf</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Uploaded yesterday • Processed by CareIntel AI</div>
+                      </div>
+                    </div>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.75rem;" onclick="openDemoModal('report-view')">View AI Summary</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <button class="btn btn-primary" onclick="openDemoModal('patient-experience')">
+          <span>Explore Patient Experience Demo</span>
+          <i data-lucide="arrow-right" style="width: 16px;"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. DOCTOR EXPERIENCE -->
+  <section class="experience-section" id="doctor-experience" style="background: var(--bg-main);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Clinical Efficiency</span>
+        <h2 class="section-title">Give Doctors the Information They Need, Faster.</h2>
+        <p class="section-subtitle">Reduce chart prep time from 15 minutes to 15 seconds with ambient clinical intelligence.</p>
+      </div>
+
+      <div class="dashboard-window">
+        <div class="window-topbar">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span style="font-size: 0.85rem; font-weight: 600;">CareIntel Clinical Suite — Dr. Ananya Sharma</span>
+          <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #FFFFFF; font-size: 0.75rem;">Ambient AI Active</span>
+        </div>
+
+        <div class="window-body">
+          <div class="doctor-dashboard-content">
+            <!-- Left Clinical Nav -->
+            <div class="doc-sidebar-nav">
+              <div class="doc-nav-item active" onclick="switchDoctorTab('overview', this)">
+                <i data-lucide="user" style="width: 16px;"></i> Patient Overview
+              </div>
+              <div class="doc-nav-item" onclick="switchDoctorTab('history', this)">
+                <i data-lucide="history" style="width: 16px;"></i> Medical History
+              </div>
+              <div class="doc-nav-item" onclick="switchDoctorTab('reports', this)">
+                <i data-lucide="file-spreadsheets" style="width: 16px;"></i> Uploaded Reports
+              </div>
+              <div class="doc-nav-item" onclick="switchDoctorTab('summary', this)">
+                <i data-lucide="sparkles" style="width: 16px; color: var(--blue-600);"></i> AI Clinical Summary
+              </div>
+              <div class="doc-nav-item" onclick="switchDoctorTab('prescription', this)">
+                <i data-lucide="pill" style="width: 16px;"></i> Prescription & Rx
+              </div>
+            </div>
+
+            <!-- Right Clinical Main Panel -->
+            <div class="doc-main-panel" id="docMainPanel">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;">
+                <div>
+                  <h3 style="font-size: 1.3rem; color: var(--navy-900);">Patient: Arjun Kumar</h3>
+                  <p style="font-size: 0.85rem;">Chief Complaint: Mild chest discomfort & post-exertional fatigue (3 days)</p>
+                </div>
+                <span class="status-badge in-progress" style="padding: 6px 14px; font-size: 0.85rem;">Active Consultation</span>
+              </div>
+
+              <!-- Highlighted AI Summary Card -->
+              <div class="ai-summary-glow-card">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <i data-lucide="sparkles" style="color: var(--blue-600);"></i>
+                  <strong style="color: var(--navy-900); font-size: 0.95rem;">CareIntel AI Synthesis:</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--navy-800); line-height: 1.6;">
+                  • <strong>Key Insights:</strong> Patient has a history of mild hypertension. Recent lipid panel (uploaded Sep 11) shows LDL: 142 mg/dL, HDL: 44 mg/dL.<br>
+                  • <strong>Allergies:</strong> Penicillin (Moderate skin rash).<br>
+                  • <strong>AI Recommendation:</strong> Baseline ECG suggested; review BP medication dosage and order fasting blood glucose.
+                </p>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="background: var(--bg-main); padding: 16px; border-radius: var(--radius-sm);">
+                  <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Vitals (Recorded 10:15 AM)</div>
+                  <div style="font-size: 1.1rem; font-weight: 700; margin-top: 6px;">BP: 132/84 mmHg | HR: 76 bpm | SpO2: 98%</div>
+                </div>
+
+                <div style="background: var(--bg-main); padding: 16px; border-radius: var(--radius-sm);">
+                  <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Consultation Draft</div>
+                  <div style="font-size: 0.875rem; color: var(--navy-800); margin-top: 6px;">Autofilled by AI Voice Note assistant. Ready for doctor sign-off.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. HOSPITAL COMMAND CENTER (DARK MODE) -->
+  <section class="command-center" id="command-center">
+    <div class="container">
+      <div class="section-header command-header">
+        <span class="section-tag" style="color: var(--cyan-400);">Enterprise Operations</span>
+        <h2 class="section-title">See Your Hospital in Real Time.</h2>
+        <p class="section-subtitle">Real-time visibility into emergency admissions, bed occupancy, doctor utilization, and department workloads.</p>
+      </div>
+
+      <!-- Real-time Stat Counters -->
+      <div class="command-grid">
+        <div class="cmd-stat-box">
+          <div class="cmd-stat-lbl">Total Patients Today</div>
+          <div class="cmd-stat-val counter" data-target="1482">0</div>
+          <span style="font-size: 0.75rem; color: var(--success);"><i data-lucide="trending-up" style="width: 12px; vertical-align: middle;"></i> +12% vs yesterday</span>
+        </div>
+
+        <div class="cmd-stat-box">
+          <div class="cmd-stat-lbl">Waiting Patients</div>
+          <div class="cmd-stat-val counter" data-target="14">0</div>
+          <span style="font-size: 0.75rem; color: var(--cyan-400);">Optimal flow</span>
+        </div>
+
+        <div class="cmd-stat-box">
+          <div class="cmd-stat-lbl">Avg Wait Time</div>
+          <div class="cmd-stat-val"><span class="counter" data-target="8">0</span>.4 <span style="font-size: 1rem; font-weight: 500;">mins</span></div>
+          <span style="font-size: 0.75rem; color: var(--success);"><i data-lucide="arrow-down" style="width: 12px; vertical-align: middle;"></i> -42% queue time</span>
+        </div>
+
+        <div class="cmd-stat-box">
+          <div class="cmd-stat-lbl">Doctor Utilization</div>
+          <div class="cmd-stat-val"><span class="counter" data-target="92">0</span>%</div>
+          <span style="font-size: 0.75rem; color: var(--cyan-400);">High efficiency</span>
+        </div>
+      </div>
+
+      <!-- Real-time HTML5 Canvas Charts -->
+      <div class="charts-row">
+        <div class="chart-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h4>Hourly Patient Flow & Admission Velocity</h4>
+            <span class="badge-pill" style="background: rgba(6, 182, 212, 0.15); color: var(--cyan-400); font-size: 0.75rem;">Live Telemetry</span>
+          </div>
+          <canvas id="patientFlowChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h4>Department Workload</h4>
+          <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 10px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                <span>Emergency Room (ER)</span>
+                <span style="color: var(--danger); font-weight: 700;">88% Workload</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                <div style="width: 88%; height: 100%; background: var(--danger);"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                <span>Cardiology OPD</span>
+                <span style="color: var(--warning); font-weight: 700;">74% Workload</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                <div style="width: 74%; height: 100%; background: var(--warning);"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                <span>General Pediatrics</span>
+                <span style="color: var(--success); font-weight: 700;">45% Workload</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                <div style="width: 45%; height: 100%; background: var(--success);"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                <span>Radiology & Diagnostics</span>
+                <span style="color: var(--cyan-400); font-weight: 700;">62% Workload</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                <div style="width: 62%; height: 100%; background: var(--cyan-400);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. SECURITY SECTION -->
+  <section class="security-section" id="security">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Enterprise Trust</span>
+        <h2 class="section-title">Built With Privacy and Security in Mind.</h2>
+        <p class="section-subtitle">Compliant architecture designed to protect patient records and maintain strict clinical data governance.</p>
+      </div>
+
+      <div class="security-grid">
+        <div class="security-card">
+          <div class="security-badge-icon"><i data-lucide="user-check"></i></div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Role-Based Access</h3>
+          <p>Strict role permissions ensuring doctors, nurses, and admins only see data pertinent to their clinical duty.</p>
+        </div>
+
+        <div class="security-card">
+          <div class="security-badge-icon"><i data-lucide="key-round"></i></div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Secure Authentication</h3>
+          <p>Multi-factor authentication (MFA) and single sign-on (SSO) integrated with hospital enterprise active directory.</p>
+        </div>
+
+        <div class="security-card">
+          <div class="security-badge-icon"><i data-lucide="history"></i></div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Audit Logs</h3>
+          <p>Immutable, timestamped event trails logging every data view, edit, prescription change, and AI summary request.</p>
+        </div>
+
+        <div class="security-card">
+          <div class="security-badge-icon"><i data-lucide="lock"></i></div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Protected Documents</h3>
+          <p>End-to-end AES-256 encrypted storage for lab reports, medical scans, prescriptions, and identity records.</p>
+        </div>
+
+        <div class="security-card">
+          <div class="security-badge-icon"><i data-lucide="sliders"></i></div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Access Control</h3>
+          <p>Granular department privileges preventing cross-department record leakage without explicit authorization.</p>
+        </div>
+
+        <div class="security-card">
+          <div class="security-badge-icon"><i data-lucide="shield"></i></div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Data Privacy</h3>
+          <p>Zero data retention policy for third-party AI models. Your hospital data stays private and local to your environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="badge-pill" style="background: rgba(6, 182, 212, 0.15); color: var(--cyan-400); margin-bottom: 20px;">
+          <span>✦ Transform Hospital Operations</span>
+        </div>
+        <h2>Build a Smarter Healthcare Experience.</h2>
+        <p>Connect patients, doctors and hospital operations through one intelligent, AI-powered platform.</p>
+        
+        <div class="cta-buttons">
+          <button class="btn btn-primary" onclick="openDemoModal('get-started')" style="padding: 14px 32px; font-size: 1.05rem;">
+            <span>Get Started</span>
+            <i data-lucide="arrow-right" style="width: 18px;"></i>
+          </button>
+          <button class="btn btn-outline-dark" onclick="openDemoModal('request-demo')" style="padding: 14px 32px; font-size: 1.05rem;">
+            <span>Schedule Hospital Demo</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo-brand" style="color: #FFFFFF;">
+            <div class="logo-icon">
+              <i data-lucide="activity"></i>
+            </div>
+            <span>CareIntel <span class="text-cyan">AI</span></span>
+          </a>
+          <p>Intelligent Healthcare Operations. Better Patient Experience.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="#patient-experience">Patient Portal</a></li>
+            <li><a href="#doctor-experience">Doctor Suite</a></li>
+            <li><a href="#command-center">Hospital Admin</a></li>
+            <li><a href="#features">AI Intelligence Engine</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="#features">Key Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#security">Security & Compliance</a></li>
+            <li><a href="#" onclick="openDemoModal('docs')">API Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#" onclick="openDemoModal('about')">About Us</a></li>
+            <li><a href="#" onclick="openDemoModal('contact')">Contact Team</a></li>
+            <li><a href="#" onclick="openDemoModal('privacy')">Privacy Policy</a></li>
+            <li><a href="#" onclick="openDemoModal('terms')">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 CareIntel AI Inc. All rights reserved.</span>
+        <span>Enterprise Healthcare SaaS Platform</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE DEMO MODAL -->
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="logo-icon" style="width: 28px; height: 28px; font-size: 0.8rem;">
+            <i data-lucide="activity"></i>
+          </div>
+          <h3 id="modalTitle" style="font-size: 1.15rem;">CareIntel AI Interactive Simulator</h3>
+        </div>
+        <button class="modal-close" onclick="closeDemoModal()">✕</button>
+      </div>
+      <div id="modalBody" style="font-size: 0.95rem; color: var(--navy-800); line-height: 1.6;">
+        <!-- Dynamic content filled via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
