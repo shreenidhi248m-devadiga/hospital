@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Calendar, Clock, FileText, Users, ArrowRight, PillBottle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../../stores/authStore';
@@ -30,8 +30,8 @@ const PatientDashboard = () => {
       <div style={{ background:'linear-gradient(135deg,#0F2B5B 0%,#1E40AF 100%)', borderRadius:'14px', padding:'24px 28px', marginBottom:'20px', position:'relative', overflow:'hidden' }}>
         <div style={{ position:'absolute', top:'-40px', right:'-20px', width:'160px', height:'160px', borderRadius:'50%', backgroundColor:'rgba(255,255,255,0.04)' }} />
         <h1 style={{ fontSize:'22px', fontWeight:800, color:'white', margin:0 }}>Welcome back, {user?.name?.split(' ')[0]} 👋</h1>
-        <p style={{ fontSize:'14px', color:'rgba(255,255,255,0.6)', margin:'4px 0 0' }}>Here's an overview of your health dashboard.</p>
-        <Link to="/patient/appointments" style={{ display:'inline-flex', alignItems:'center', gap:'6px', marginTop:'14px', padding:'8px 16px', borderRadius:'8px', backgroundColor:'rgba(255,255,255,0.12)', color:'white', fontSize:'13px', fontWeight:600, textDecoration:'none', border:'1px solid rgba(255,255,255,0.1)' }}>
+        <p style={{ fontSize:'14px', color:'rgba(255,255,255,0.7)', margin:'4px 0 0' }}>Here's an overview of your health dashboard.</p>
+        <Link to="/patient/appointments" style={{ display:'inline-flex', alignItems:'center', gap:'6px', marginTop:'14px', padding:'8px 16px', borderRadius:'8px', backgroundColor:'rgba(255,255,255,0.12)', color:'white', fontSize:'13px', fontWeight:600, textDecoration:'none', border:'1px solid rgba(255,255,255,0.2)' }}>
           Book Appointment <ArrowRight size={14} />
         </Link>
       </div>
@@ -63,7 +63,7 @@ const PatientDashboard = () => {
                     <span style={{ width:'6px', height:'6px', borderRadius:'50%', backgroundColor:statusDot[a.status] }} />{a.status}
                   </span>
                 </div>
-                <p style={{ fontSize:'12px', color:'#6B7280', margin:'2px 0 0' }}>{a.specialty} · {a.type}</p>
+                <p style={{ fontSize:'12px', color:'#6B7280', margin:'2px 0 0' }}>{a.specialty} • {a.type}</p>
               </div>
               <div style={{ textAlign:'right', flexShrink:0 }}>
                 <p style={{ fontSize:'13px', fontWeight:700, color:'#111827', margin:0 }}>{a.date}</p>

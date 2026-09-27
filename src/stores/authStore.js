@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 
 const mockUsers = {
   'patient@medflow.com': { id: '1', name: 'Sarah Johnson', email: 'patient@medflow.com', role: 'patient', avatar: null, phone: '+1 (555) 123-4567' },
@@ -15,7 +15,6 @@ export const useAuthStore = create((set) => ({
 
   login: async (email, password) => {
     set({ isLoading: true, error: null });
-    // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     const user = mockUsers[email];
@@ -44,6 +43,13 @@ export const useAuthStore = create((set) => ({
     set({ user, isAuthenticated: true, isLoading: false });
     return user;
   },
+
+  updateUser: (updatedData) => set((state) => {
+    if (!state.user) return {};
+    const newUser = { ...state.user, ...updatedData };
+    localStorage.setItem('medflow_user', JSON.stringify(newUser));
+    return { user: newUser };
+  }),
 
   logout: () => {
     localStorage.removeItem('medflow_user');

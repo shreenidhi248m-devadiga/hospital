@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Users, Calendar, Activity, DollarSign, ArrowRight, UserPlus, Stethoscope, UserCog, LayoutDashboard } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../../stores/authStore';
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard title="Total Patients" value="2,450" change="12%" changeType="increase" description="this month" icon={Users} color="primary" />
         <StatCard title="Active Doctors" value={mockDoctors.length.toString()} change="1 new" changeType="increase" icon={Stethoscope} color="secondary" />
-        <StatCard title="Today's Revenue" value="$24,500" change="8%" changeType="increase" description="vs yesterday" icon={DollarSign} color="success" />
+        <StatCard title="Today's Revenue" value="₹2,45,000" change="8%" changeType="increase" description="vs yesterday" icon={DollarSign} color="success" />
         <StatCard title="Appointments" value="156" change="3%" changeType="decrease" description="vs last week" icon={Calendar} color="warning" />
       </div>
 
@@ -69,8 +69,8 @@ const AdminDashboard = () => {
               <BarChart data={analyticsData.revenue}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
                 <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#94A3B8' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 12, fill: '#94A3B8' }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
-                <Tooltip contentStyle={{ borderRadius: '12px', border: '1px solid #E2E8F0', fontSize: '13px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }} formatter={(v) => `$${v.toLocaleString()}`} />
+                <YAxis tick={{ fontSize: 12, fill: '#94A3B8' }} axisLine={false} tickLine={false} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
+                <Tooltip contentStyle={{ borderRadius: '12px', border: '1px solid #E2E8F0', fontSize: '13px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }} formatter={(v) => `₹${v.toLocaleString()}`} />
                 <Bar dataKey="revenue" fill="#3B82F6" radius={[6, 6, 0, 0]} />
                 <Bar dataKey="expenses" fill="#E2E8F0" radius={[6, 6, 0, 0]} />
               </BarChart>
@@ -166,3 +166,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

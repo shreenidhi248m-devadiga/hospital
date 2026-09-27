@@ -1,14 +1,16 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const Modal = ({ isOpen, onClose, title, children, size = 'md', footer }) => {
-  const sizes = {
-    sm: 'max-w-md',
-    md: 'max-w-lg',
-    lg: 'max-w-2xl',
-    xl: 'max-w-4xl',
+  const widthSizes = {
+    sm: '480px',
+    md: '560px',
+    lg: '680px',
+    xl: '840px',
   };
+
+  const maxWidth = widthSizes[size] || '560px';
 
   useEffect(() => {
     if (isOpen) {
@@ -30,40 +32,95 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md', footer }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 9999,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '16px'
+        }}>
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-surface-900/40 backdrop-blur-sm"
+            style={{
+              position: 'absolute', inset: 0,
+              backgroundColor: 'rgba(15, 23, 42, 0.5)',
+              backdropFilter: 'blur(4px)'
+            }}
             onClick={onClose}
           />
+
+          {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ type: 'spring', duration: 0.3 }}
-            className={`relative bg-white rounded-2xl shadow-modal w-full ${sizes[size]} max-h-[85vh] flex flex-col`}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ type: 'spring', duration: 0.25 }}
+            style={{
+              position: 'relative',
+              backgroundColor: 'white',
+              borderRadius: '20px',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05)',
+              width: '100%',
+              maxWidth: maxWidth,
+              maxHeight: '85vh',
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              fontFamily: "'Inter', system-ui, sans-serif"
+            }}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-surface-200">
-              <h2 className="text-lg font-semibold text-surface-900">{title}</h2>
+            {/* Modal Header */}
+            <div style={{
+              padding: '20px 24px',
+              borderBottom: '1px solid #E2E8F0',
+              display: 'flex',
+              alignItems: 'center',
+              justify: 'space-between',
+              gap: '16px',
+              backgroundColor: 'white'
+            }}>
+              <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.3, flex: 1 }}>
+                {title}
+              </h2>
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-lg hover:bg-surface-100 text-surface-400 hover:text-surface-600 transition-colors cursor-pointer"
+                style={{
+                  width: '32px', height: '32px', borderRadius: '9px',
+                  border: '1px solid #E2E8F0', backgroundColor: '#F8FAFC',
+                  color: '#64748B', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0, marginLeft: 'auto',
+                  transition: 'all 0.15s ease'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#FEF2F2'; e.currentTarget.style.color = '#DC2626'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#F8FAFC'; e.currentTarget.style.color = '#64748B'; }}
               >
-                <X className="w-5 h-5" />
+                <X size={16} />
               </button>
             </div>
 
-            {/* Body */}
-            <div className="flex-1 overflow-y-auto px-6 py-4">
+            {/* Modal Body */}
+            <div style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '24px',
+              color: '#1E293B'
+            }}>
               {children}
             </div>
 
-            {/* Footer */}
+            {/* Modal Footer */}
             {footer && (
-              <div className="px-6 py-4 border-t border-surface-200 flex items-center justify-end gap-3">
+              <div style={{
+                padding: '16px 24px',
+                borderTop: '1px solid #E2E8F0',
+                backgroundColor: '#F8FAFC',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'flex-end',
+                gap: '12px'
+              }}>
                 {footer}
               </div>
             )}

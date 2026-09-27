@@ -188,3 +188,11 @@ body {
   .lg\:\!grid-cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
+
+
+/* Desktop Sidebar Spacer Fix */
+@media (min-width: 1024px) {
+  .main-content-layout {
+    margin-left: 240px !important;
+  }
+}

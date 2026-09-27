@@ -1,9 +1,17 @@
-import { Eye } from 'lucide-react';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import Avatar from '../../components/ui/Avatar';
 import DataTable from '../../components/ui/DataTable';
 import { mockPatients } from '../../data/mockData';
+
+const formatDateDDMMYYYY = (dateStr) => {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  }
+  return dateStr;
+};
 
 const DoctorRecords = () => {
   const columns = [
@@ -19,14 +27,11 @@ const DoctorRecords = () => {
     { key: 'age', label: 'Age', render: (val, row) => `${val}, ${row.gender}` },
     { key: 'blood', label: 'Blood' },
     { key: 'conditions', label: 'Conditions', render: (val) => val.length > 0 ? val.map((c, i) => <Badge key={i} variant="warning" className="mr-1 mb-1">{c}</Badge>) : <span className="text-surface-400">None</span> },
-    { key: 'lastVisit', label: 'Last Visit' },
-    { key: 'actions', label: '', sortable: false, render: () => (
-      <button className="p-1.5 rounded-lg hover:bg-surface-100 text-surface-400 hover:text-primary-600 cursor-pointer"><Eye className="w-4 h-4" /></button>
-    )},
+    { key: 'lastVisit', label: 'Last Visit', render: (val) => formatDateDDMMYYYY(val) },
   ];
 
   return (
-    <div className="space-y-6">
+    <div style={{ maxWidth: '1200px', margin: '0 auto', fontFamily: "'Inter', system-ui, sans-serif" }} className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-surface-900">Patient Records</h1>
         <p className="text-sm text-surface-500 mt-1">View and manage your patients' medical records</p>

@@ -1,14 +1,14 @@
-import { useState, useMemo } from 'react';
-import { Search, ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+﻿import { useState, useMemo } from 'react';
+import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Search } from 'lucide-react';
 
 const DataTable = ({
-  columns,
-  data,
+  columns = [],
+  data = [],
   searchable = true,
-  searchPlaceholder = 'Search...',
+  searchPlaceholder = 'Search records...',
   pageSize = 8,
   onRowClick,
-  emptyMessage = 'No data found',
+  emptyMessage = 'No matching records found',
 }) => {
   const [search, setSearch] = useState('');
   const [sortKey, setSortKey] = useState(null);
@@ -37,7 +37,7 @@ const DataTable = ({
     return result;
   }, [data, search, sortKey, sortDir, columns]);
 
-  const totalPages = Math.ceil(filteredData.length / pageSize);
+  const totalPages = Math.ceil(filteredData.length / pageSize) || 1;
   const pagedData = filteredData.slice(page * pageSize, (page + 1) * pageSize);
 
   const handleSort = (key) => {
@@ -50,36 +50,64 @@ const DataTable = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', backgroundColor: 'white', borderRadius: '16px' }}>
+      
+      {/* Search Header Container inside Card */}
       {searchable && (
-        <div className="relative max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400" />
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setPage(0); }}
-            placeholder={searchPlaceholder}
-            className="w-full pl-10 pr-4 py-2 text-sm border border-surface-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500"
-          />
+        <div style={{
+          padding: '16px 24px', backgroundColor: '#F8FAFC',
+          borderBottom: '1px solid #E2E8F0', borderTopLeftRadius: '16px', borderTopRightRadius: '16px'
+        }}>
+          <div style={{ position: 'relative', maxWidth: '340px' }}>
+            <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', width: '16px', height: '16px', color: '#94A3B8' }} />
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => { setSearch(e.target.value); setPage(0); }}
+              placeholder={searchPlaceholder}
+              style={{
+                width: '100%', padding: '9px 14px 9px 36px', fontSize: '13px',
+                backgroundColor: 'white', border: '1px solid #CBD5E1', borderRadius: '10px',
+                outline: 'none', transition: 'all 0.15s', color: '#0F172A'
+              }}
+              onFocus={(e) => e.target.style.borderColor = '#2563EB'}
+              onBlur={(e) => e.target.style.borderColor = '#CBD5E1'}
+            />
+          </div>
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-surface-200">
-        <table className="w-full text-sm">
+      {/* Table Area */}
+      <div style={{ overflowX: 'auto', width: '100%' }}>
+        <table style={{ width: '100%', fontSize: '13px', textAlign: 'left', borderCollapse: 'collapse', borderSpacing: 0 }}>
           <thead>
-            <tr className="bg-surface-50 border-b border-surface-200">
+            <tr style={{ backgroundColor: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
               {columns.map((col) => (
                 <th
                   key={col.key}
                   onClick={() => col.sortable !== false && handleSort(col.key)}
-                  className={`px-4 py-3 text-left font-semibold text-surface-600 ${
-                    col.sortable !== false ? 'cursor-pointer select-none hover:text-surface-900' : ''
-                  } ${col.className || ''}`}
+                  style={{
+                    paddingTop: '18px',
+                    paddingBottom: '18px',
+                    paddingLeft: '24px',
+                    paddingRight: '24px',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    letterSpacing: '0.06em',
+                    color: '#475569',
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap',
+                    lineHeight: '1.5',
+                    cursor: col.sortable !== false ? 'pointer' : 'default',
+                    userSelect: 'none',
+                    verticalAlign: 'middle'
+                  }}
+                  className={col.className || ''}
                 >
-                  <div className="flex items-center gap-1.5">
-                    {col.label}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minHeight: '20px' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#475569', letterSpacing: '0.06em' }}>{col.label}</span>
                     {sortKey === col.key && (
-                      sortDir === 'asc' ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />
+                      sortDir === 'asc' ? <ChevronUp style={{ width: '14px', height: '14px', color: '#2563EB' }} /> : <ChevronDown style={{ width: '14px', height: '14px', color: '#2563EB' }} />
                     )}
                   </div>
                 </th>
@@ -89,7 +117,7 @@ const DataTable = ({
           <tbody>
             {pagedData.length === 0 ? (
               <tr>
-                <td colSpan={columns.length} className="px-4 py-12 text-center text-surface-400">
+                <td colSpan={columns.length} style={{ padding: '48px 24px', textAlign: 'center', color: '#94A3B8', fontWeight: 500 }}>
                   {emptyMessage}
                 </td>
               </tr>
@@ -98,12 +126,16 @@ const DataTable = ({
                 <tr
                   key={row.id || i}
                   onClick={() => onRowClick?.(row)}
-                  className={`border-b border-surface-100 last:border-0 ${
-                    onRowClick ? 'cursor-pointer hover:bg-primary-50/50' : 'hover:bg-surface-50'
-                  } transition-colors`}
+                  style={{
+                    borderBottom: i < pagedData.length - 1 ? '1px solid #F1F5F9' : 'none',
+                    cursor: onRowClick ? 'pointer' : 'default',
+                    transition: 'background-color 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#F8FAFC'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
                   {columns.map((col) => (
-                    <td key={col.key} className={`px-4 py-3 text-surface-700 ${col.className || ''}`}>
+                    <td key={col.key} style={{ padding: '16px 24px', color: '#1E293B', fontWeight: 500, verticalAlign: 'middle' }} className={col.className || ''}>
                       {col.render ? col.render(row[col.key], row) : row[col.key]}
                     </td>
                   ))}
@@ -114,26 +146,40 @@ const DataTable = ({
         </table>
       </div>
 
+      {/* Pagination Footer */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between text-sm text-surface-500">
+        <div style={{
+          padding: '16px 24px', borderTop: '1px solid #F1F5F9',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          flexWrap: 'wrap', gap: '12px', fontSize: '12px', color: '#64748B', fontWeight: 500,
+          backgroundColor: '#F8FAFC', borderBottomLeftRadius: '16px', borderBottomRightRadius: '16px'
+        }}>
           <span>
-            Showing {page * pageSize + 1}–{Math.min((page + 1) * pageSize, filteredData.length)} of {filteredData.length}
+            Showing {filteredData.length > 0 ? page * pageSize + 1 : 0} - {Math.min((page + 1) * pageSize, filteredData.length)} of {filteredData.length} entries
           </span>
-          <div className="flex items-center gap-1">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <button
               onClick={() => setPage(Math.max(0, page - 1))}
               disabled={page === 0}
-              className="p-1.5 rounded-lg hover:bg-surface-100 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+              style={{
+                padding: '6px 10px', borderRadius: '8px', border: '1px solid #CBD5E1',
+                backgroundColor: 'white', cursor: page === 0 ? 'not-allowed' : 'pointer',
+                opacity: page === 0 ? 0.4 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft style={{ width: '16px', height: '16px', color: '#475569' }} />
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i}
                 onClick={() => setPage(i)}
-                className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
-                  page === i ? 'bg-primary-600 text-white' : 'hover:bg-surface-100'
-                }`}
+                style={{
+                  minWidth: '32px', height: '32px', borderRadius: '8px', fontSize: '12px', fontWeight: 700,
+                  border: page === i ? 'none' : '1px solid #E2E8F0',
+                  backgroundColor: page === i ? '#2563EB' : 'white',
+                  color: page === i ? 'white' : '#475569', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}
               >
                 {i + 1}
               </button>
@@ -141,9 +187,13 @@ const DataTable = ({
             <button
               onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
               disabled={page === totalPages - 1}
-              className="p-1.5 rounded-lg hover:bg-surface-100 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+              style={{
+                padding: '6px 10px', borderRadius: '8px', border: '1px solid #CBD5E1',
+                backgroundColor: 'white', cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',
+                opacity: page === totalPages - 1 ? 0.4 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight style={{ width: '16px', height: '16px', color: '#475569' }} />
             </button>
           </div>
         </div>
