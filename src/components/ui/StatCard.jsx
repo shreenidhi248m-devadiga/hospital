@@ -1,4 +1,4 @@
-﻿import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 const StatCard = ({ title, value, change, changeType = 'increase', icon: Icon, color = 'primary', description }) => {
@@ -26,11 +26,10 @@ const StatCard = ({ title, value, change, changeType = 'increase', icon: Icon, c
           {change && (
             <div className="mt-2 flex items-center gap-1.5 flex-wrap">
               <span
-                className={`inline-flex items-center gap-0.5 text-xs font-bold px-2 py-0.5 rounded-md ${
-                  changeType === 'increase'
+                className={`inline-flex items-center gap-0.5 text-xs font-bold px-2 py-0.5 rounded-md ${changeType === 'increase'
                     ? 'text-emerald-700 bg-emerald-50 border border-emerald-200'
                     : 'text-red-700 bg-red-50 border border-red-200'
-                }`}
+                  }`}
               >
                 {changeType === 'increase' ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
                 {change}

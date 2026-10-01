@@ -14,15 +14,14 @@ const Badge = ({ children, variant = 'default', dot = false, className = '' }) =
       className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium ${badgeVariants[variant]} ${className}`}
     >
       {dot && (
-        <span className={`w-1.5 h-1.5 rounded-full ${
-          variant === 'success' ? 'bg-emerald-500' :
-          variant === 'warning' ? 'bg-amber-500' :
-          variant === 'danger' ? 'bg-red-500' :
-          variant === 'info' ? 'bg-blue-500' :
-          variant === 'primary' ? 'bg-primary-500' :
-          variant === 'secondary' ? 'bg-secondary-500' :
-          'bg-surface-500'
-        }`} />
+        <span className={`w-1.5 h-1.5 rounded-full ${variant === 'success' ? 'bg-emerald-500' :
+            variant === 'warning' ? 'bg-amber-500' :
+              variant === 'danger' ? 'bg-red-500' :
+                variant === 'info' ? 'bg-blue-500' :
+                  variant === 'primary' ? 'bg-primary-500' :
+                    variant === 'secondary' ? 'bg-secondary-500' :
+                      'bg-surface-500'
+          }`} />
       )}
       {children}
     </span>
