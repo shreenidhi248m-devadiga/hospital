@@ -1,7 +1,8 @@
-﻿import { useState, useRef } from 'react';
+﻿
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  User, Mail, Phone, MapPin, Shield, Camera, Save, 
+import {
+  User, Mail, Phone, MapPin, Shield, Camera, Save,
   CheckCircle2, Lock, KeyRound, Smartphone, Bell, Calendar, Sparkles, Check
 } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
@@ -86,7 +87,7 @@ const ProfilePage = () => {
 
   return (
     <div style={{ maxWidth: '960px', margin: '0 auto', fontFamily: "'Inter', system-ui, sans-serif" }}>
-      
+
       {/* Hidden File Picker Input */}
       <input
         type="file"
@@ -121,7 +122,7 @@ const ProfilePage = () => {
 
       {/* Main Grid Layout */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        
+
         {/* HERO AVATAR CARD */}
         <div style={{
           backgroundColor: 'white', borderRadius: '16px', border: '1px solid #E5E7EB',
@@ -129,7 +130,7 @@ const ProfilePage = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            
+
             {/* Avatar Container with Camera Trigger */}
             <div style={{ position: 'relative' }}>
               <div style={{
@@ -366,7 +367,7 @@ const ProfilePage = () => {
           </h3>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-            
+
             {/* Password Row */}
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',

@@ -34,19 +34,19 @@ const LoginPage = () => {
     try {
       const u = await login(data.email, data.password);
       navigate(`/${u.role}`);
-    } catch {}
+    } catch { }
   };
 
   const demoLogin = async (email) => {
     try {
       const u = await login(email, 'password123');
       navigate(`/${u.role}`);
-    } catch {}
+    } catch { }
   };
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', fontFamily: "'Inter', system-ui, sans-serif", backgroundColor: '#FFFFFF' }}>
-      
+
       {/* LEFT COLUMN: Authentication Form */}
       <div
         style={{
